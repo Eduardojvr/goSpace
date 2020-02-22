@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/playerShip2_red.png" type="Texture" id=1]
+[ext_resource path="res://scenes/scripts/nave.gd" type="Script" id=2]
+
+[node name="nave" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 312.29, 393.757 )
+texture = ExtResource( 1 )
