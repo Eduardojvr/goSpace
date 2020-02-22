@@ -21,7 +21,13 @@ func _process(delta):
 	
 	if Input.is_action_pressed("esquerda"):
 		e = -1
-	
+		
+	print(get_position().x)
+	if get_position().x > 270:
+		d = 0 
+		
+	if get_position().x < -250:
+		e = 0 
 	set_position(get_position() + Vector2(vel, 0) * delta * (d + e))
 	pass
 	
