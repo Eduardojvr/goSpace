@@ -17,7 +17,7 @@ func _process(delta):
 	var e = 0
 	var c = 0
 	var b = 0
-
+	print(get_position().y)
 	if Input.is_action_pressed("direita"):
 		d = 1
 	
@@ -36,6 +36,11 @@ func _process(delta):
 	if get_position().x < -250:
 		e = 0 
 		
+	if get_position().y > 47:
+		b = 0 
+		
+	if get_position().y < -355:
+		c = 0 
 	
 		
 	set_position(get_position() + Vector2(vel, 0) * delta * (d + e))
