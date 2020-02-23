@@ -17,7 +17,7 @@ func _process(delta):
 	var e = 0
 	var c = 0
 	var b = 0
-	print(get_position().y)
+
 	if Input.is_action_pressed("direita"):
 		d = 1
 	
