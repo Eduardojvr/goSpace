@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 var pre_tiro = preload("res://scenes/tiro.tscn")
 var vel = 400
+var intervalo = .3
+var ultimo_disparo = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,17 +45,21 @@ func _process(delta):
 	if get_position().y < 40:
 		c = 0 
 
-	set_position(get_position() + Vector2(vel, 0) * delta * (d + e))
-	set_position(get_position() + Vector2(0, vel) * delta * (c + b))
+	set_position(get_position() + Vector2(1, 0) * vel * delta * (d + e))
+	set_position(get_position() + Vector2(0, 1) * vel * delta * (c + b))
 	
 
 	if Input.is_action_pressed("tiro"):
-		var tiro = pre_tiro.instance()
-		tiro.set_global_position(get_global_position())
-		get_node("../").add_child(tiro)
-	pass
-	
+		if ultimo_disparo <= 0:
+			dispara(get_node("canhao1"))
+			dispara(get_node("canhao2"))
+			ultimo_disparo = intervalo
+		if ultimo_disparo > 0:
+			ultimo_disparo -= delta
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func dispara(node):
+	var tiro = pre_tiro.instance()
+	tiro.set_global_position(node.get_global_position())
+	get_parent().add_child(tiro)
+
+	
