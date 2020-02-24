@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/transparentLight04.png" type="Texture" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://sprites/transparentLight01.png" type="Texture" id=4]
 [ext_resource path="res://sprites/transparentLight08.png" type="Texture" id=5]
 [ext_resource path="res://sprites/back.jpg" type="Texture" id=6]
+[ext_resource path="res://sprites/transparentLight47.png" type="Texture" id=7]
 
 [node name="main" type="Node"]
 
 [node name="nave" parent="." instance=ExtResource( 1 )]
-position = Vector2( -3.08783, 40.1418 )
+position = Vector2( 342.927, 440.454 )
 
 [node name="direita" type="TouchScreenButton" parent="."]
 position = Vector2( 102.289, 357.048 )
@@ -48,3 +49,8 @@ visibility_mode = 1
 scale = Vector2( 0.380258, 0.456895 )
 texture = ExtResource( 6 )
 centered = false
+
+[node name="tiro" type="TouchScreenButton" parent="."]
+position = Vector2( 529.843, 352.869 )
+normal = ExtResource( 7 )
+action = "tiro"

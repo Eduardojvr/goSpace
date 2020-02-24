@@ -4,6 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var pre_tiro = preload("res://scenes/tiro.tscn")
 var vel = 400
 
 
@@ -30,21 +31,26 @@ func _process(delta):
 	if Input.is_action_pressed("baixo"):
 		b = 1	
 
-	if get_position().x > 270:
+	if get_position().x > 590:
 		d = 0 
 		
-	if get_position().x < -250:
+	if get_position().x < 56:
 		e = 0 
 		
-	if get_position().y > 47:
+	if get_position().y > 440:
 		b = 0 
 		
-	if get_position().y < -355:
+	if get_position().y < 40:
 		c = 0 
-	
-		
+
 	set_position(get_position() + Vector2(vel, 0) * delta * (d + e))
 	set_position(get_position() + Vector2(0, vel) * delta * (c + b))
+	
+
+	if Input.is_action_pressed("tiro"):
+		var tiro = pre_tiro.instance()
+		tiro.set_global_position(get_global_position())
+		get_node("../").add_child(tiro)
 	pass
 	
 

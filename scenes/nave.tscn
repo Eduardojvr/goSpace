@@ -4,9 +4,9 @@
 [ext_resource path="res://scenes/scripts/nave.gd" type="Script" id=2]
 
 [node name="nave" type="Node2D"]
-position = Vector2( -310.534, -398.773 )
+position = Vector2( -1.2025, -0.934425 )
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 312.29, 393.757 )
+position = Vector2( -0.616447, -0.0176468 )
 texture = ExtResource( 1 )
