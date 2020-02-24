@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/transparentLight04.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://sprites/transparentLight08.png" type="Texture" id=5]
 [ext_resource path="res://sprites/back.jpg" type="Texture" id=6]
 [ext_resource path="res://sprites/transparentLight47.png" type="Texture" id=7]
+[ext_resource path="res://scenes/meteoro.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/gerador_meteoro.tscn" type="PackedScene" id=9]
 
 [node name="main" type="Node"]
 
@@ -55,3 +57,8 @@ centered = false
 position = Vector2( 529.843, 352.869 )
 normal = ExtResource( 7 )
 action = "tiro"
+
+[node name="meteoro" parent="." instance=ExtResource( 8 )]
+position = Vector2( 308, -45 )
+
+[node name="Node" parent="." instance=ExtResource( 9 )]
