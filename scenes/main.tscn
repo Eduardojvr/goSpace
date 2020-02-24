@@ -46,7 +46,8 @@ visibility_mode = 1
 [node name="ParallaxLayer" type="ParallaxLayer" parent="background"]
 
 [node name="Sprite" type="Sprite" parent="background/ParallaxLayer"]
-scale = Vector2( 0.380258, 0.456895 )
+position = Vector2( -26.9777, -14.0284 )
+scale = Vector2( 0.406593, 0.480533 )
 texture = ExtResource( 6 )
 centered = false
 
