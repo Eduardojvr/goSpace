@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -19,3 +19,8 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_tiro_area_entered(area):
+	area.queue_free()
+	pass # Replace with function body.
