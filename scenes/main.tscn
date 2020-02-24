@@ -1,8 +1,50 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/transparentLight04.png" type="Texture" id=2]
+[ext_resource path="res://sprites/transparentLight03.png" type="Texture" id=3]
+[ext_resource path="res://sprites/transparentLight01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/transparentLight08.png" type="Texture" id=5]
+[ext_resource path="res://sprites/back.jpg" type="Texture" id=6]
 
 [node name="main" type="Node"]
 
 [node name="nave" parent="." instance=ExtResource( 1 )]
 position = Vector2( -3.08783, 40.1418 )
+
+[node name="direita" type="TouchScreenButton" parent="."]
+position = Vector2( 102.289, 357.048 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 2 )
+action = "direita"
+visibility_mode = 1
+
+[node name="esquerda" type="TouchScreenButton" parent="."]
+position = Vector2( 25.6373, 356.672 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 3 )
+action = "esquerda"
+visibility_mode = 1
+
+[node name="baixo" type="TouchScreenButton" parent="."]
+position = Vector2( 71.2838, 390.141 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 5 )
+action = "baixo"
+visibility_mode = 1
+
+[node name="cima" type="TouchScreenButton" parent="."]
+position = Vector2( 71.9635, 309.736 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 4 )
+action = "cima"
+visibility_mode = 1
+
+[node name="background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background"]
+
+[node name="Sprite" type="Sprite" parent="background/ParallaxLayer"]
+scale = Vector2( 0.380258, 0.456895 )
+texture = ExtResource( 6 )
+centered = false
