@@ -24,6 +24,11 @@ func _process(delta):
 func _on_tiro_area_entered(area):
 	# area.queue_free()
 	if area.is_in_group(game.GRUPO_INIMIGO):
-		area.queue_free()
+		if area.has_method("tira_vida"):
+			area.tira_vida(1)
+			area.get_node("anim").play("hit")
+			#area.queue_free()
+		else :
+			area.queue_free()
 		self.queue_free()
 	pass # Replace with function body.

@@ -6,6 +6,7 @@ extends Area2D
 # var b = "text"
 var vel = 250
 var rot = 0
+var vida = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +21,9 @@ func _process(delta):
 	rotate(rot * delta)
 	if get_position().y > 500:
 		queue_free()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		
+func tira_vida(valor):
+	vida -= valor
+	if vida <= 0:
+		self.queue_free()
+
