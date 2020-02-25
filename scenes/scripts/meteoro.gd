@@ -9,6 +9,7 @@ var rot = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group(game.GRUPO_INIMIGO)
 	randomize()
 	set_process(true)
 	rot = rand_range(-20, 20)

@@ -17,10 +17,13 @@ func _process(delta):
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+#func _process(delta):	
 #	pass
 
 
 func _on_tiro_area_entered(area):
-	area.queue_free()
+	# area.queue_free()
+	if area.is_in_group(game.GRUPO_INIMIGO):
+		area.queue_free()
+		self.queue_free()
 	pass # Replace with function body.
