@@ -4,7 +4,7 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var vel = 100
+var vel = 200
 var rot = 0
 var vida = 2
 
