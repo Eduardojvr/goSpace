@@ -20,6 +20,7 @@ script/source = "extends Camera2D
 # var a = 2
 # var b = \"text\"
 var vel = 150
+var shake = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,16 +29,18 @@ func _ready():
 
 func _process(delta):
 	set_offset(get_offset() + Vector2(0, -1) * vel * delta)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+	if shake > 0:
+		set_position(Vector2(cos(rad2deg(shake)), sin(rad2deg(shake))) * 5 )
+		shake -= delta
+	else:
+		set_position(Vector2(0, 0))
+func shake():
+	shake = .5
+	
 "
 
 [node name="main" type="CanvasLayer"]
-
-[node name="nave" parent="." instance=ExtResource( 1 )]
-position = Vector2( 342.927, 440.454 )
-z_index = 10
 
 [node name="direita" type="TouchScreenButton" parent="."]
 position = Vector2( 109.033, 351.416 )
@@ -79,6 +82,10 @@ visibility_mode = 1
 anchor_mode = 0
 current = true
 script = SubResource( 1 )
+
+[node name="nave" parent="camera" instance=ExtResource( 1 )]
+position = Vector2( 342.927, 440.454 )
+z_index = 10
 
 [node name="background" type="ParallaxBackground" parent="."]
 

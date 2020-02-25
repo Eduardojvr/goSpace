@@ -29,5 +29,6 @@ func tira_vida(valor):
 		set_z_index(10)
 		remove_from_group(game.GRUPO_INIMIGO)
 		get_node("anim").play("destroy")
+		get_tree().get_root().get_node("main/camera").shake()
 		#self.queue_free()
 
