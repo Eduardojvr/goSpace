@@ -26,6 +26,7 @@ func tira_vida(valor):
 	vida -= valor
 	if vida <= 0:
 		set_process(false)
+		set_z_index(10)
 		remove_from_group(game.GRUPO_INIMIGO)
 		get_node("anim").play("destroy")
 		#self.queue_free()
