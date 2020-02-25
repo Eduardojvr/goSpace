@@ -25,8 +25,8 @@ func _on_tiro_area_entered(area):
 	# area.queue_free()
 	if area.is_in_group(game.GRUPO_INIMIGO):
 		if area.has_method("tira_vida"):
-			area.tira_vida(1)
 			area.get_node("anim").play("hit")
+			area.tira_vida(1)
 			#area.queue_free()
 		else :
 			area.queue_free()

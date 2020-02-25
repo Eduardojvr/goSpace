@@ -4,7 +4,7 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var vel = 250
+var vel = 100
 var rot = 0
 var vida = 2
 
@@ -25,5 +25,7 @@ func _process(delta):
 func tira_vida(valor):
 	vida -= valor
 	if vida <= 0:
-		self.queue_free()
+		remove_from_group(game.GRUPO_INIMIGO)
+		get_node("anim").play("destroy")
+		#self.queue_free()
 
