@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/scripts/nave.gd" type="Script" id=2]
 [ext_resource path="res://sprites/Parts/gun02.png" type="Texture" id=3]
 
-[node name="nave" type="Node2D"]
+[node name="nave" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
@@ -24,3 +24,7 @@ texture = ExtResource( 3 )
 
 [node name="pontaCanhao2" type="Position2D" parent="canhao2"]
 position = Vector2( -0.5, -30 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -56.5, 5.34948, -38.5727, -4.15744, -38.301, -18.0104, -29.0657, -17.4671, -28.2509, -9.04671, -16.2993, -14.7509, -14.1263, -18.0104, -10.8668, -19.9118, -4.07613, -38.1107, 2.71454, -37.8391, 10.5917, -19.3685, 29.0623, -7.14533, 29.8772, -19.6401, 39.6557, -18.8253, 39.3841, -5.24395, 41.5571, -1.98443, 55.6817, 5.89273, 36.3962, 34.4135, 16.2958, 29.5242, 11.1349, 38.2163, -13.0398, 38.2163, -17.6574, 29.7958, -37.4862, 34.1419 )
+[connection signal="area_entered" from="." to="." method="_on_nave_area_entered"]

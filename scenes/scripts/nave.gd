@@ -62,4 +62,11 @@ func dispara(node):
 	tiro.set_global_position(node.get_global_position())
 	get_parent().add_child(tiro)
 
-	
+func _on_nave_area_entered(area):
+	if area.is_in_group(game.GRUPO_INIMIGO):
+		if area.has_method("tira_vida"):
+			area.get_node("anim").play("hit")
+			area.tira_vida(200)
+			game.lifes -= 1
+
+
