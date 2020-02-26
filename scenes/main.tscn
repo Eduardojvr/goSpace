@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/transparentLight04.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://sprites/Effects/star1.png" type="Texture" id=10]
 [ext_resource path="res://fonts/BMSPA___.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://sprites/UI/playerLife3_red.png" type="Texture" id=12]
+[ext_resource path="res://sprites/shadedLight14.png" type="Texture" id=13]
+[ext_resource path="res://sprites/shadedLight16.png" type="Texture" id=14]
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends CanvasLayer
@@ -32,7 +34,9 @@ func _input(event):
 		get_tree().set_pause(!get_tree().is_paused())
 		if get_tree().is_paused():
 			get_node(\"paused\").show()
+			get_node(\"preto_branco\").show()
 		else:
+			get_node(\"preto_branco\").hide()
 			get_node(\"paused\").hide()
 
 
@@ -40,6 +44,24 @@ func _input(event):
 #func _process(delta):
 #	pass
 "
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+
+void fragment()
+{
+ vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
+ COLOR.rgb = vec3(dot(color.rgb, vec3(0.5,0.5,0.5)));
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+
+[sub_resource type="CanvasItemMaterial" id=10]
+next_pass = SubResource( 9 )
+
+[sub_resource type="ImageTexture" id=11]
 
 [sub_resource type="DynamicFontData" id=6]
 hinting = 1
@@ -136,6 +158,18 @@ func _draw():
 pause_mode = 2
 layer = 3
 script = SubResource( 5 )
+
+[node name="preto_branco" type="TextureRect" parent="pause"]
+visible = false
+material = SubResource( 10 )
+margin_right = 649.0
+margin_bottom = 491.0
+texture = SubResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
 [node name="paused" type="Label" parent="pause"]
 visible = false
@@ -417,3 +451,10 @@ __meta__ = {
 [node name="lifes" type="Node2D" parent="feed"]
 script = SubResource( 4 )
 textura = ExtResource( 12 )
+
+[node name="touchpause" type="TouchScreenButton" parent="."]
+pause_mode = 2
+position = Vector2( 582.811, 73.2584 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
+action = "pause"
