@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/transparentLight04.png" type="Texture" id=2]
@@ -12,6 +12,42 @@
 [ext_resource path="res://sprites/Effects/star1.png" type="Texture" id=10]
 [ext_resource path="res://fonts/BMSPA___.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://sprites/UI/playerLife3_red.png" type="Texture" id=12]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_process_input(true)
+	pass # Replace with function body.
+	
+func _input(event):
+	if event.is_action_pressed(\"pause\") && !event.is_echo():
+		get_tree().set_pause(!get_tree().is_paused())
+		if get_tree().is_paused():
+			get_node(\"paused\").show()
+		else:
+			get_node(\"paused\").hide()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="DynamicFontData" id=6]
+hinting = 1
+font_path = "res://fonts/BMSPA___.TTF"
+
+[sub_resource type="DynamicFont" id=7]
+size = 60
+font_data = SubResource( 6 )
 
 [sub_resource type="GDScript" id=1]
 resource_name = "parallax_camera"
@@ -95,6 +131,24 @@ func _draw():
 "
 
 [node name="main" type="CanvasLayer"]
+
+[node name="pause" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 3
+script = SubResource( 5 )
+
+[node name="paused" type="Label" parent="pause"]
+visible = false
+margin_left = 163.095
+margin_top = 153.047
+margin_right = 534.095
+margin_bottom = 214.047
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.00784314, 1, 0.117647, 1 )
+text = "Pausado"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="direita" type="TouchScreenButton" parent="."]
 position = Vector2( 109.033, 351.416 )
