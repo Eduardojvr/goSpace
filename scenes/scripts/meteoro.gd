@@ -25,6 +25,7 @@ func _process(delta):
 func tira_vida(valor):
 	vida -= valor
 	if vida <= 0:
+		game.score +=1
 		get_node("explosao").play()
 		set_process(false)
 		set_z_index(10)
