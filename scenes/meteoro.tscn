@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/Meteors/meteorBrown_big1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/scripts/meteoro.gd" type="Script" id=2]
+[ext_resource path="res://samples/exploser.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "destroy"
@@ -146,3 +147,6 @@ lifetime = 0.7
 explosiveness = 0.71
 randomness = 1.0
 process_material = SubResource( 7 )
+
+[node name="explosao" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

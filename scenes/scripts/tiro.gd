@@ -9,7 +9,8 @@ var vel = 500
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(true)
-
+	get_node("tiro").play()
+	
 func _process(delta):
 	set_position(get_position() + Vector2(0, -1) * vel * delta)
 
